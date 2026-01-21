@@ -1,0 +1,504 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TECH</title>
+    <link rel="icon" sizes="64x64" href="favicon.png">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        :root {
+            --bg-dark: #020617;
+            --bg-card: #0f172a;
+            --accent-hardware: #38bdf8;
+            --accent-robotics: #22c55e;
+            --accent-extra: #a78bfa;
+            --text-main: #f8fafc;
+            --text-dim: #94a3b8;
+            --border: #1e293b;
+            --modal-bg: rgba(2, 6, 23, 0.98);
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-dark);
+            color: var(--text-main);
+            margin: 0;
+            line-height: 1.6;
+        }
+
+        .container { max-width: 1400px; margin: 0 auto; padding: 20px; }
+
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 25px 0;
+            border-bottom: 1px solid var(--border);
+            margin-bottom: 30px;
+        }
+
+        .logo { font-size: 1.6rem; font-weight: 900; color: var(--text-main); text-transform: uppercase; }
+        .logo span { color: var(--accent-hardware); }
+
+        #current-date {
+            font-size: 0.9rem;
+            color: #020617;
+            font-weight: 700;
+            background: #ffffff;
+            padding: 10px 18px;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(255, 255, 255, 0.15);
+        }
+
+        .welcome-box {
+            background: linear-gradient(135deg, #0f172a 0%, #020617 100%);
+            padding: 40px;
+            border-radius: 24px;
+            border: 1px solid var(--border);
+            margin-bottom: 40px;
+            text-align: left;
+        }
+
+        .welcome-box h1 { margin: 0; font-size: 2.5rem; font-weight: 800; }
+
+        .instructor-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            margin-top: 15px;
+            color: var(--text-color);
+        }
+
+        .tabs-nav {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 40px;
+            background: #0f172a;
+            padding: 8px;
+            border-radius: 16px;
+            border: 1px solid var(--border);
+            position: sticky;
+            top: 20px;
+            z-index: 100;
+        }
+
+        .tab-btn {
+            flex: 1;
+            background: transparent;
+            border: none;
+            color: var(--text-dim);
+            padding: 14px;
+            font-weight: 700;
+            cursor: pointer;
+            border-radius: 12px;
+            transition: 0.3s;
+        }
+
+        .tab-btn.active[data-target="hw"] { background: var(--accent-hardware); color: #000; }
+        .tab-btn.active[data-target="rb"] { background: var(--accent-robotics); color: #000; }
+        .tab-btn.active[data-target="rf"] { background: var(--accent-extra); color: #000; }
+
+        .grid-layout {
+            display: none;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+        }
+
+        .grid-layout.active { display: grid; }
+
+        .card {
+            background: var(--bg-card);
+            border-radius: 18px;
+            padding: 25px;
+            border: 1px solid var(--border);
+            transition: 0.3s;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .card:hover { transform: translateY(-5px); }
+        .card i { font-size: 2rem; margin-bottom: 15px; }
+
+        .hw-card:hover { border-color: var(--accent-hardware); }
+        .hw-card i { color: var(--accent-hardware); }
+        .rb-card:hover { border-color: var(--accent-robotics); }
+        .rb-card i { color: var(--accent-robotics); }
+        .rf-card:hover { border-color: var(--accent-extra); }
+        .rf-card i { color: var(--accent-extra); }
+
+        .btn-class {
+            background: #1e293b;
+            color: white;
+            border: none;
+            padding: 10px;
+            border-radius: 8px;
+            font-weight: 700;
+            cursor: pointer;
+            margin-top: auto;
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: var(--modal-bg);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .modal-content {
+            background: var(--bg-card);
+            max-width: 1100px;
+            width: 95%;
+            max-height: 90vh;
+            border-radius: 24px;
+            padding: 50px;
+            border: 1px solid var(--accent-hardware);
+            overflow-y: auto;
+            position: relative;
+        }
+
+        .close-modal {
+            position: absolute;
+            top: 25px; right: 25px;
+            font-size: 2rem;
+            color: var(--text-dim);
+            cursor: pointer;
+        }
+
+        .content-body h2 { color: var(--accent-hardware); font-size: 2.2rem; margin-bottom: 20px; }
+        .content-body h3 { color: var(--accent-robotics); margin-top: 35px; font-size: 1.6rem; border-left: 4px solid var(--accent-robotics); padding-left: 15px; }
+
+        .analog-table-container {
+            overflow-x: auto;
+            margin: 25px 0;
+            border-radius: 12px;
+            border: 1px solid var(--border);
+        }
+
+        .analog-table {
+            width: 100%;
+            border-collapse: collapse;
+            background: rgba(255,255,255,0.01);
+        }
+
+        .analog-table th {
+            background: rgba(56, 189, 248, 0.15);
+            color: var(--accent-hardware);
+            text-align: left;
+            padding: 18px;
+            border-bottom: 2px solid var(--border);
+        }
+
+        .analog-table tr:hover {
+            background: rgba(56, 189, 248, 0.1);
+            box-shadow: inset 4px 0 0 var(--accent-hardware);
+        }
+
+        .analog-table td {
+            padding: 18px;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .icon-col { font-size: 1.5rem; color: var(--accent-hardware); text-align: center; width: 60px; }
+        .comp-tag { font-weight: 800; color: var(--accent-hardware); }
+        .human-tag { color: var(--accent-robotics); font-weight: 600; }
+
+        .activity-card {
+            background: rgba(74, 222, 128, 0.05);
+            border: 1px dashed var(--accent-robotics);
+            padding: 25px;
+            border-radius: 16px;
+        }
+
+        .sync-box {
+            background: rgba(167, 139, 250, 0.05);
+            border-left: 4px solid var(--accent-extra);
+            padding: 25px;
+            margin-top: 30px;
+            border-radius: 0 16px 16px 0;
+        }
+
+        footer {
+            margin-top: 60px;
+            padding: 20px 0;
+            text-align: center;
+            border-top: 1px solid var(--border);
+            color: var(--text-dim);
+        }
+
+        @media (max-width: 1000px) { .grid-layout { grid-template-columns: repeat(2, 1fr); } }
+        @media (max-width: 600px) { .grid-layout { grid-template-columns: 1fr; } }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <header>
+            <div class="logo"><i class="fas fa-microchip"></i><span> II LAPSO | CLASES DE TECNOLOGÍA</span></div>
+            <div id="current-date"></div>
+        </header>
+
+        <section class="welcome-box">
+            <h1>Panel de Control Educativo</h1>
+            <p style="color: var(--text-dim); max-width: 700px;">Material académico interactivo para el desarrollo de competencias digitales.</p>
+            <div class="instructor-badge">
+                <i class="fas fa-user-tie"></i><strong>Instructor & developer:</strong> <span style="color: var(--accent-hardware); margin-left: 5px;"><strong>José Hernández</strong></span>
+            </div>
+        </section>
+
+        <nav class="tabs-nav">
+            <button class="tab-btn active" data-target="hw">Estructura del Computador</button>
+            <button class="tab-btn" data-target="rb">Robótica</button>
+            <button class="tab-btn" data-target="rf">Clases de Refuerzo</button>
+        </nav>
+
+        <div id="hw" class="grid-layout active">
+            <div class="card hw-card">
+                <i class="fas fa-bolt"></i>
+                <span style="color: var(--accent-hardware); font-weight: bold; font-size: 0.8rem;">DISPONIBLE</span>
+                <h3>Clase 1: El Cyborg Tecnológico</h3>
+                <p>Hardware y la analogía del sistema humano.</p>
+                <button class="btn-class" onclick="openClass(1)" style="background: var(--accent-hardware); color: #000;">Ver Clase</button>
+            </div>
+
+            <div class="card hw-card">
+                <i class="fas fa-city"></i>
+                <span style="color: var(--accent-hardware); font-weight: bold; font-size: 0.8rem;">NUEVO</span>
+                <h3>Clase 2: La ciudad eléctrica</h3>
+                <p>Tarjeta madre y CPU como motor central.</p>
+                <button class="btn-class" onclick="openClass(2)" style="background: var(--accent-hardware); color: #000;">Ver Clase</button>
+            </div>
+
+            <script>
+                for(let i=3; i<=11; i++) {
+                    document.write(`<div class="card hw-card"><i class="fas fa-cpu"></i><h3>Clase ${i}</h3><p>Módulo de arquitectura y componentes.</p><button class="btn-class">Próximamente</button></div>`);
+                }
+            </script>
+        </div>
+
+        <div id="rb" class="grid-layout">
+            <script>
+                for(let i=1; i<=11; i++) {
+                    document.write(`
+                    <div class="card rb-card">
+                        <i class="fas fa-robot"></i>
+                        <h3>Robótica: Clase ${i}</h3>
+                        <p>Diseño, mecanismos y programación.</p>
+                        <button class="btn-class">Ver Contenido</button>
+                    </div>`);
+                }
+            </script>
+        </div>
+
+        <div id="rf" class="grid-layout">
+            <script>
+                for(let i=1; i<=11; i++) {
+                    document.write(`
+                    <div class="card rf-card">
+                        <i class="fas fa-graduation-cap"></i>
+                        <h3>Refuerzo: Clase ${i}</h3>
+                        <p>Nivelación y profundización técnica.</p>
+                        <button class="btn-class">Ver Contenido</button>
+                    </div>`);
+                }
+            </script>
+        </div>
+    </div>
+
+    <div id="modal-1" class="modal">
+        <div class="modal-content">
+            <span class="close-modal" onclick="closeClass(1)">&times;</span>
+            <div class="content-body">
+                <h2>🦾 Clase 1: El Cyborg Tecnológico</h2>
+                
+                <h3>El Despertar</h3>
+                <p># Hook: "Si pudieras reemplazar una parte de tu cuerpo por una pieza robótica, ¿cuál elegirías y por qué?".</p>
+                <p># Hoy vamos a dejar de ver al computador como un objeto inerte y vamos a verlo como un Cuerpo Digital.</p>
+
+                <h3 style="color: var(--accent-hardware); border-color: var(--accent-hardware);">HARDWARE</h3>
+                <div style="background: rgba(56, 189, 248, 0.05); border-radius: 12px; padding: 20px; border: 1px solid rgba(56, 189, 248, 0.2); margin-bottom: 30px;">
+                    <p><strong># Definición técnica:</strong> Conjunto de componentes físicos y tangibles de un sistema informático, abarcando elementos eléctricos, electrónicos, electromecánicos y mecánicos, como la CPU, memoria RAM, disco duro, teclado, monitor y periféricos, que interactúan con el software para procesar datos y ejecutar funciones.</p>
+                    <p><strong># Definición de relámpago:</strong> Todo lo que puedes tocar (lo físico/sólido). Si le duele cuando le pegas, es hardware.</p>
+                </div>
+
+                <h3>La Gran Analogía: Cuerpo vs. Computador</h3>
+                <div class="analog-table-container">
+                    <table class="analog-table">
+                        <thead>
+                            <tr>
+                                <th>Icono</th>
+                                <th>Componente</th>
+                                <th>Comparación</th>
+                                <th>Descripción</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td class="icon-col"><i class="fas fa-microchip"></i></td>
+                                <td class="comp-tag">El CPU (Procesador)</td>
+                                <td class="human-tag">Cerebro</td>
+                                <td>Toma las decisiones y dice qué hacer. Sin él, nada se mueve.</td>
+                            </tr>
+                            <tr>
+                                <td class="icon-col"><i class="fas fa-project-diagram"></i></td>
+                                <td class="comp-tag">Tarjeta Madre</td>
+                                <td class="human-tag">Sistema Nervioso</td>
+                                <td>Cables y caminos que conectan el cerebro con los dedos, pies y órganos.</td>
+                            </tr>
+                            <tr>
+                                <td class="icon-col"><i class="fas fa-plug"></i></td>
+                                <td class="comp-tag">Fuente de Poder</td>
+                                <td class="human-tag">Sistema Digestivo</td>
+                                <td>Convierte la energía (comida/electricidad) en algo útil para funcionar.</td>
+                            </tr>
+                            <tr>
+                                <td class="icon-col"><i class="fas fa-memory"></i></td>
+                                <td class="comp-tag">Memoria RAM</td>
+                                <td class="human-tag">Memoria Corto Plazo</td>
+                                <td>Lo que estás pensando justo ahora (recordar una frase del profesor).</td>
+                            </tr>
+                            <tr>
+                                <td class="icon-col"><i class="fas fa-hdd"></i></td>
+                                <td class="comp-tag">Disco Duro</td>
+                                <td class="human-tag">Memoria Largo Plazo</td>
+                                <td>Donde guardas tus recuerdos de la infancia o cómo andar en bicicleta.</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <h3>Actividad Creativa: "Mi Avatar Robot"</h3>
+                <div class="activity-card">
+                    <p>Instrucción: Dibuja en tu cuaderno una silueta humana e interviénla con los componentes de hardware:</p>
+                    <ul>
+                        <li><strong>El Reto:</strong> Dibujar los componentes en el lugar donde irían sus órganos (ej: procesador en la frente, cables/buses en los brazos, batería en el estómago).</li>
+                        <li><strong>Requisito:</strong> Señalar al menos 5 componentes con flechas y escribir su nombre técnico oficial.</li>
+                    </ul>
+                </div>
+
+                <h3>Sincronización</h3>
+                <div class="sync-box">
+                    <p><strong># Pregunta de Reflexión:</strong> "Si a un computador se le daña el 'estómago' (Fuente de poder), ¿puede seguir pensando?". ¿Qué pasaría si se dañase otro componente?</p>
+                    <p><strong># Ticket de Salida:</strong> Decir en voz alta una similitud y una diferencia entre un humano y un PC.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="modal-2" class="modal">
+        <div class="modal-content" style="border-color: var(--accent-robotics);">
+            <span class="close-modal" onclick="closeClass(2)">&times;</span>
+            <div class="content-body">
+                <h2>🏙️ Clase 2: La ciudad eléctrica (Tarjeta madre y CPU)</h2>
+                <p style="color: var(--accent-hardware); font-weight: 600;">Objetivo: Identificar la Tarjeta Madre como el centro de conexiones y el CPU como el motor de procesamiento, comprendiendo cómo viaja la información entre ellos.</p>
+                
+                <h3>El viaje de la información</h3>
+                <p><strong>El reto mental:</strong> Pregunta a la clase: "Si el CPU es el cerebro y está en el centro, ¿cómo sabe que moviste el mouse que está lejos?".</p>
+                <p><strong>Respuesta:</strong> Así como una ciudad necesita carreteras para que los camiones lleven suministros, el computador necesita "pistas" de cobre.</p>
+
+                
+
+                <h3>Tour por la metrópolis</h3>
+                <p><strong>1. Mini-Lección: Los barrios de la ciudad</strong></p>
+                <p>Utiliza una placa real y señala estos puntos clave:</p>
+                
+                <div class="analog-table-container">
+                    <table class="analog-table">
+                        <thead>
+                            <tr>
+                                <th>Barrio de la Ciudad</th>
+                                <th>Componente Real</th>
+                                <th>Función en la Metrópolis</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td class="human-tag">El palacio municipal</td>
+                                <td class="comp-tag">Socket/Zócalo</td>
+                                <td>Donde vive el Alcalde (CPU). Es el sitio más importante.</td>
+                            </tr>
+                            <tr>
+                                <td class="human-tag">Las autopistas</td>
+                                <td class="comp-tag">Buses</td>
+                                <td>Líneas brillantes por donde viajan los datos a la velocidad de la luz.</td>
+                            </tr>
+                            <tr>
+                                <td class="human-tag">La zona industrial</td>
+                                <td class="comp-tag">Slots de RAM</td>
+                                <td>Donde se guarda el material con el que se está trabajando ahora.</td>
+                            </tr>
+                            <tr>
+                                <td class="human-tag">El puerto marítimo</td>
+                                <td class="comp-tag">Puertos E/S</td>
+                                <td>Por donde entra y sale mercancía (USB, HDMI).</td>
+                            </tr>
+                            <tr>
+                                <td class="human-tag">Sistema de clima</td>
+                                <td class="comp-tag">Ventilador/Disipador</td>
+                                <td>El aire acondicionado para que el Alcalde no se sofoque.</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <h3>Actividad Práctica: "Arquitectos de circuitos"</h3>
+                <div class="activity-card">
+                    <p><strong>Material:</strong> Una fotocopia de una tarjeta madre y colores.</p>
+                    <p><strong>Misión:</strong> Los estudiantes deben "mapear" la ciudad:</p>
+                    <ul>
+                        <li>Colorea de <strong>rojo</strong> el palacio municipal (Socket).</li>
+                        <li>Colorea de <strong>azul</strong> las autopistas (Buses que salen del CPU).</li>
+                        <li>Colorea de <strong>verde</strong> el puerto marítimo (Conectores externos).</li>
+                        <li>Dibuja un símbolo de <strong>"Hielo"</strong> sobre dónde iría el enfriador.</li>
+                    </ul>
+                </div>
+
+                <div class="sync-box">
+                    <h3>El mensaje del alcalde</h3>
+                    <p><strong># Reflexión final:</strong> ¿Qué pasaría si una de esas "calles" (líneas de cobre) se rompe o se raya? (Discusión sobre el cuidado del hardware).</p>
+                    <p style="margin-top: 15px; color: var(--accent-extra);"><strong># Adelanto:</strong> "La clase que viene veremos dónde guarda el Alcalde sus archivos cuando termina el día: <strong>La Memoria".</strong></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2026 <strong>CLASES DE TECNOLOGÍA</strong></p>
+    </footer>
+
+    <script>
+        const tabs = document.querySelectorAll('.tab-btn');
+        const grids = document.querySelectorAll('.grid-layout');
+
+        tabs.forEach(tab => {
+            tab.addEventListener('click', () => {
+                tabs.forEach(t => t.classList.remove('active'));
+                grids.forEach(g => g.classList.remove('active'));
+                tab.classList.add('active');
+                document.getElementById(tab.dataset.target).classList.add('active');
+            });
+        });
+
+        function displayDate() {
+            const now = new Date();
+            const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+            document.getElementById('current-date').textContent = now.toLocaleDateString('es-ES', options).toUpperCase();
+        }
+
+        function openClass(id) { document.getElementById(`modal-${id}`).style.display = 'flex'; }
+        function closeClass(id) { document.getElementById(`modal-${id}`).style.display = 'none'; }
+        
+        window.onclick = function(e) { 
+            if (e.target.className === 'modal') {
+                e.target.style.display = 'none';
+            }
+        }
+        
+        displayDate();
+    </script>
+</body>
+</html>
