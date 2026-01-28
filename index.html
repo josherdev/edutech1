@@ -246,8 +246,8 @@
             <h1>Panel de Control Educativo</h1>
             <p style="color: var(--text-dim); max-width: 700px;">Material académico interactivo para el desarrollo de competencias digitales.</p>
             <div class="instructor-badge">
-                <i class="fas fa-user-tie"></i><strong>Instructor & developer:</strong><span style="color: var(--accent-hardware); margin-left: 5px;"><strong>José Hernández</strong></span>
-            </div>      
+                <i class="fas fa-user-tie"></i><strong>Instructor & developer:</strong> <span style="color: var(--accent-hardware); margin-left: 5px;"><strong>José Hernández</strong></span>
+            </div>
         </section>
 
         <nav class="tabs-nav">
@@ -267,14 +267,22 @@
 
             <div class="card hw-card">
                 <i class="fas fa-city"></i>
-                <span style="color: var(--accent-hardware); font-weight: bold; font-size: 0.8rem;">NUEVO</span>
+                <span style="color: var(--accent-hardware); font-weight: bold; font-size: 0.8rem;">DISPONIBLE</span>
                 <h3>Clase 2: La ciudad eléctrica</h3>
                 <p>Tarjeta madre y CPU como motor central.</p>
                 <button class="btn-class" onclick="openClass(2)" style="background: var(--accent-hardware); color: #000;">Ver Clase</button>
             </div>
 
+            <div class="card hw-card">
+                <i class="fas fa-brain"></i>
+                <span style="color: var(--accent-hardware); font-weight: bold; font-size: 0.8rem;">NUEVO</span>
+                <h3>Clase 3: ¿Recordar o Guardar?</h3>
+                <p>RAM vs. Disco Duro.</p>
+                <button class="btn-class" onclick="openClass(3)" style="background: var(--accent-hardware); color: #000;">Ver Clase</button>
+            </div>
+
             <script>
-                for(let i=3; i<=11; i++) {
+                for(let i=4; i<=11; i++) {
                     document.write(`<div class="card hw-card"><i class="fas fa-cpu"></i><h3>Clase ${i}</h3><p>Módulo de arquitectura y componentes.</p><button class="btn-class">Próximamente</button></div>`);
                 }
             </script>
@@ -404,6 +412,7 @@
 
                 <h3>Tour por la metrópolis</h3>
                 <p><strong>1. Mini-Lección: Los barrios de la ciudad</strong></p>
+                <p>Utiliza una placa real y señala estos puntos clave:</p>
                 
                 <div class="analog-table-container">
                     <table class="analog-table">
@@ -460,6 +469,100 @@
                     <h3>El mensaje del alcalde</h3>
                     <p><strong># Reflexión final:</strong> ¿Qué pasaría si una de esas "calles" (líneas de cobre) se rompe o se raya? (Discusión sobre el cuidado del hardware).</p>
                     <p style="margin-top: 15px; color: var(--accent-extra);"><strong># Adelanto:</strong> "La clase que viene veremos dónde guarda el Alcalde sus archivos cuando termina el día: <strong>La Memoria".</strong></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="modal-3" class="modal">
+        <div class="modal-content" style="border-color: var(--accent-extra);">
+            <span class="close-modal" onclick="closeClass(3)">&times;</span>
+            <div class="content-body">
+                <h2>🧠 Clase 3: ¿Recordar o Guardar? (RAM vs. Disco Duro)</h2>
+                <p style="color: var(--accent-hardware); font-weight: 600;">Objetivo: Diferenciar entre almacenamiento volátil (RAM) y permanente (Disco Duro/SSD), entendiendo sus funciones y capacidades.</p>
+                
+                <h3>El desafío de los 10 segundos</h3>
+                <p><strong>El experimento:</strong> Observa esta lista. Solo tienes 10 segundos.</p>
+
+				<div class="activity-card">
+                    <ul>
+                        <li>Silla</li>
+                        <li>Nube</li>
+                        <li>Perro</li>
+                        <li>Lápiz</li>
+						<li>Manzana</li>
+						<li>Vaso</li>
+						<li>Calle</li>
+                    </ul>
+                </div>
+                <p><strong>La tarea:</strong> Escribir las palabras que recuerden en su cuaderno.</p>
+                <p><strong>La reflexión:</strong></p>
+                <ul>
+                    <li>¿Dónde estaban las palabras mientras las leían?</li>
+                    <li>¿Dónde están ahora que las escribieron?</li>
+                    <li>¿Qué pasa si cierran el cuaderno y lo abren mañana? ¿Y si se les olvida lo que tenían en la mente?</li>
+                </ul>
+
+                <h3>El escritorio de trabajo</h3>
+                <p><strong>1. La analogía maestra</strong></p>
+                <p>Explica los conceptos usando este esquema visual:</p>
+                <div class="analog-table-container">
+                    <table class="analog-table">
+                        <thead>
+                            <tr>
+                                <th>Componente</th>
+                                <th>Analogía</th>
+                                <th>Función</th>
+                                <th>¿Qué pasa si se va la luz?</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td class="comp-tag">RAM</td>
+                                <td class="human-tag">El escritorio</td>
+                                <td>Espacio para poner los libros y cuadernos que estás usando justo ahora.</td>
+                                <td>Se limpia todo (Volátil).</td>
+                            </tr>
+                            <tr>
+                                <td class="comp-tag">Disco Duro / SSD</td>
+                                <td class="human-tag">El archivador</td>
+                                <td>Mueble grande donde guardas todo lo que no estás usando pero quieres conservar.</td>
+                                <td>Todo se queda guardado.</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <p><strong>2. Conceptos clave: Capacidad y velocidad</strong></p>
+                <ul>
+                    <li><strong>RAM:</strong> Es rápida pero pequeña (Ej: 8GB, 16GB). Es como un escritorio donde caben 3 cuadernos.</li>
+                    <li><strong>Disco Duro/SSD:</strong> Es más lento pero enorme (Ej: 500GB, 1TB). Es como un almacén gigante.</li>
+                </ul>
+
+                <p><strong>3. Juego de roles: "El mensajero del CPU"</strong></p>
+                <p><strong>Roles:</strong></p>
+                <ul>
+                    <li>1 Estudiante = CPU (Pide información).</li>
+                    <li>1 Estudiante = RAM (Está cerca del CPU, se mueve rápido pero solo puede cargar 1 objeto a la vez).</li>
+                    <li>1 Caja al fondo del salón = Disco Duro (Contiene diferentes objetos).</li>
+                </ul>
+                <p><strong>Dinámica:</strong> El CPU pide un objeto específico. La RAM debe correr al Disco Duro, traerlo y ponerlo en la mesa del CPU. Si el profesor grita "¡APAGÓN!", la RAM debe soltar lo que tiene y volver a su puesto vacía. El Disco Duro mantiene sus objetos.</p>
+
+                <h3>Práctica: Clasificando datos</h3>
+                <div class="activity-card">
+                    <p><strong>Actividad en cuaderno:</strong> Clasificar dónde se encuentran estos elementos en el momento descrito:</p>
+                    <ul>
+                        <li>Una foto que tomaste el año pasado.<strong>(¿DISCO o RAM?)</strong></li>
+                        <li>El nivel de un videojuego que estás jugando ahora mismo.<strong>(¿DISCO o RAM?)</strong></li>
+                        <li>El Sistema Operativo (SO) cuando el PC está apagado.<strong>(¿DISCO o RAM?)</strong></li>
+                        <li>Una pestaña de Google Chrome abierta.<strong>(¿DISCO o RAM?)</strong></li>
+                    </ul>
+                </div>
+
+                <div class="sync-box">
+                    <h3>El ticket de salida</h3>
+                    <p><strong>Pregunta final:</strong> "Si tu computador se pone muy lento cuando abres muchas aplicaciones al mismo tiempo, ¿qué 'mueble' crees que es demasiado pequeño: el escritorio (RAM) o el archivador (Disco Duro)?".</p>
+                    <p style="margin-top: 15px; color: var(--accent-extra);"><strong>Tarea:</strong> Buscar en su casa (o en una caja de celular/computador) cuántos GB de RAM y cuántos de Disco Duro tienen sus dispositivos.</p>
                 </div>
             </div>
         </div>
