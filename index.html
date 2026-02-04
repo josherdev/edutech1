@@ -222,6 +222,41 @@
             border-radius: 0 16px 16px 0;
         }
 
+		 /* Tooltip Style */
+        .tooltip {
+            position: relative;
+            display: inline-block;
+            border-bottom: 1px dotted var(--accent-hardware);
+            color: var(--accent-hardware);
+            cursor: help;
+        }
+
+        .tooltip .tooltiptext {
+            visibility: hidden;
+            width: 200px;
+            background-color: #1e293b;
+            color: #fff;
+            text-align: center;
+            border-radius: 6px;
+            padding: 10px;
+            position: absolute;
+            z-index: 1;
+            bottom: 125%;
+            left: 50%;
+            margin-left: -100px;
+            opacity: 0;
+            transition: opacity 0.3s;
+            font-size: 0.8rem;
+            border: 1px solid var(--accent-hardware);
+        }
+
+        .tooltip:hover .tooltiptext {
+            visibility: visible;
+            opacity: 1;
+        }
+
+        .hidden-content { display: none; color: var(--text-dim); font-style: italic; margin-top: 5px; }
+
         footer {
             margin-top: 60px;
             padding: 20px 0;
@@ -275,10 +310,18 @@
 
             <div class="card hw-card">
                 <i class="fas fa-brain"></i>
-                <span style="color: var(--accent-hardware); font-weight: bold; font-size: 0.8rem;">NUEVO</span>
+                <span style="color: var(--accent-hardware); font-weight: bold; font-size: 0.8rem;">DISPONIBLE</span>
                 <h3>Clase 3: ¿Recordar o Guardar?</h3>
                 <p>RAM vs. Disco Duro.</p>
                 <button class="btn-class" onclick="openClass(3)" style="background: var(--accent-hardware); color: #000;">Ver Clase</button>
+            </div>
+
+			<div class="card hw-card">
+                <i class="fas fa-gamepad"></i>
+                <span style="color: var(--accent-robotics); font-weight: bold; font-size: 0.8rem;">NUEVO</span>
+                <h3>Clase 4: Los sentidos del PC</h3>
+                <p>I/O Devices y flujo de datos.</p>
+                <button class="btn-class" onclick="openClass(4)" style="background: var(--accent-robotics); color: #000;">Ver Clase</button>
             </div>
 
             <script>
@@ -486,13 +529,13 @@
 
 				<div class="activity-card">
                     <ul>
-                        <li>Laptop</li>
-                        <li>Sol</li>
-                        <li>Pera</li>
-                        <li>Hoja</li>
-						<li>Lluvia</li>
-						<li>Termo</li>
-						<li>Avenida</li>
+                        <li>Silla</li>
+                        <li>Nube</li>
+                        <li>Perro</li>
+                        <li>Lápiz</li>
+						<li>Manzana</li>
+						<li>Vaso</li>
+						<li>Calle</li>
                     </ul>
                 </div>
                 <p><strong>La tarea:</strong> Escribir las palabras que recuerden en su cuaderno.</p>
@@ -568,6 +611,129 @@
         </div>
     </div>
 
+	<div id="modal-4" class="modal">
+        <div class="modal-content" style="border-color: var(--accent-robotics);">
+            <span class="close-modal" onclick="closeClass(4)">&times;</span>
+            <div class="content-body">
+                <h2>🎮 Clase 4: Los sentidos del computador (I/O Devices o Periféricos)</h2>
+                <p><strong>Objetivo:</strong> Clasificar y analizar los dispositivos externos (periféricos) entendiendo cómo fluyen los datos entre el usuario y el computador, evaluando cuáles son mejores para diferentes tareas (estudio, juego o creación).</p>
+                
+                <h3>El speed-test de lógica</h3>
+                <div class="activity-card">
+                    <p><em>"Imagina que tienes el computador más potente del mundo, pero está encerrado en una caja de acero sin agujeros. ¿Cómo le pides que busque una canción? ¿Cómo escuchas la música?".</em></p>
+                </div>
+				<br>
+				<div class="activity-card">
+                    <p><em>Hacia adentro <strong>(Input)</strong>, Hacia afuera <strong>(Output)</strong> o ambas <strong>(Input/Output)</strong>.</em></p>
+                </div>
+
+                <h3>Dinámica: "Input vs. Output Challenge"</h3>
+                <p>Haz clic en cada dispositivo para revelar su descripción y tipo.</p>
+                
+                <div class="analog-table-container">
+                    <table class="analog-table">
+                        <thead>
+                            <tr>
+                                <th>Dispositivo</th>
+                                <th>Acción</th>
+                                <th>Información Oculta</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td class="comp-tag">Teclado</td>
+                                <td><button onclick="toggleRow('d1')">Ver info</button></td>
+                                <td id="d1" class="hidden-content">Permite introducir texto y comandos mediante teclas. | <strong>TIPO: Input</strong></td>
+                            </tr>
+                            <tr>
+                                <td class="comp-tag">Ratón o mouse</td>
+                                <td><button onclick="toggleRow('d2')">Ver info</button></td>
+                                <td id="d2" class="hidden-content">Controla el puntero en la pantalla para interactuar. | <strong>TIPO: Input</strong></td>
+                            </tr>
+                            <tr>
+                                <td class="comp-tag">Escáner</td>
+                                <td><button onclick="toggleRow('d3')">Ver info</button></td>
+                                <td id="d3" class="hidden-content">Convierte documentos físicos en archivos digitales. | <strong>TIPO: Input</strong></td>
+                            </tr>
+                            <tr>
+                                <td class="comp-tag">Cámara web</td>
+                                <td><button onclick="toggleRow('d4')">Ver info</button></td>
+                                <td id="d4" class="hidden-content">Captura video y fotos del entorno real. | <strong>TIPO: Input</strong></td>
+                            </tr>
+							<tr>
+                                <td class="comp-tag">Auriculares/Altavoces</td>
+                                <td><button onclick="toggleRow('d5')">Ver info</button></td>
+                                <td id="d5" class="hidden-content">Permite la salida de audio. | <strong>TIPO: Output</strong></td>
+                            </tr>
+                            <tr>
+                                <td class="comp-tag">Joystick</td>
+                                <td><button onclick="toggleRow('d6')">Ver info</button></td>
+                                <td id="d6" class="hidden-content">Mando especial para controlar videojuegos. | <strong>TIPO: Input</strong></td>
+                            </tr>
+                            <tr>
+                                <td class="comp-tag">Micrófono</td>
+                                <td><button onclick="toggleRow('d7')">Ver info</button></td>
+                                <td id="d7" class="hidden-content">Captura ondas sonoras y las convierte en datos. | <strong>TIPO: Input</strong></td>
+                            </tr>
+                            <tr>
+                                <td class="comp-tag">Pantalla</td>
+                                <td><button onclick="toggleRow('d8')">Ver info</button></td>
+                                <td id="d8" class="hidden-content">Muestra visualmente la información procesada. | <strong>TIPO: Output</strong></td>
+                            </tr>
+                            <tr>
+                                <td class="comp-tag">Tarjeta gráfica</td>
+                                <td><button onclick="toggleRow('d9')">Ver info</button></td>
+                                <td id="d9" class="hidden-content">Procesa los datos de video para enviarlos al monitor. | <strong>TIPO: Output</strong></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="sync-box" style="border-color: var(--accent-hardware);">
+                    <p><strong>Giro técnico:</strong> "Si un monitor es táctil, ¿en qué categoría entra y por qué?".</p>
+                </div>
+
+                <h3>La experiencia de usuario</h3>
+                <ul>
+                    <li><strong>Periféricos de entrada (Input):</strong> Traducen nuestras acciones físicas en impulsos eléctricos. <br> <em>Debate: ¿Cuál es más preciso para jugar: un Mouse o un Joystick?</em><br>
+					<em>Ejemplos: Teclado, Cámara, Micrófono, Escáner de huellas.</em></li><br>
+                    <li><strong>Periféricos de salida (Output):</strong> Toman los datos y los convierten en algo que entendamos. <br> 
+                        <em>Debate: ¿Por qué los monitores tienen diferentes tamaños y 
+                        <span class="tooltip">"Hz"
+                            <span class="tooltiptext">La frecuencia de actualización (Hz) determina la fluidez del movimiento en pantalla. A más Hz, más suave se ve todo.</span>
+                        </span>?</em><br>
+						<em>Ejemplos: Monitor, Auriculares, Impresora 3D.</em>
+                    </li><br>
+                    <li><strong>Periféricos mixtos:</strong> Dispositivos bidireccionales.</li>
+					<em>El ejemplo rey: La pantalla táctil del celular. Recibe el toque (Entrada) y muestra la imagen (Salida) en el mismo lugar.</em><br>
+					<em>Otros: Gafas de Realidad Virtual, Cascos de Gamer con micrófono incorporado.</em>
+                </ul>
+
+                <h3>Actividad: "The Pro-Setup Audit"</h3>
+                <div class="activity-card">
+                    <p>En parejas, diseñar en una tabla el 
+                        <span class="tooltip">"Setup Ideal"
+                            <span class="tooltiptext">Configuración optimizada de periféricos y componentes para una tarea específica.</span>
+                        </span>.
+                    </p>
+                    <p><strong>Instrucción:</strong> Listar 5 periféricos + componentes esenciales y justificar su elección. Realizar una tabla en el cuaderno.</p>
+                </div>
+
+                <h3>El futuro de la interacción</h3>
+                <p>3 tecnologías que están cambiando las reglas:</p>
+                <ol>
+                    <li><strong>Anillos inteligentes:</strong> Periféricos de entrada que controlan el PC con gestos en el aire.</li>
+                    <li><strong>Ropa Inteligente:</strong> Sensores en la tela que envían datos de salud al PC (Entrada).</li>
+                    <li><strong>Hologramas:</strong> El futuro de los periféricos de salida (sustituyendo pantallas).</li>
+                </ol>
+
+                <div class="sync-box">
+                    <p><strong>Pregunta Final:</strong> <em>"Si pudieras eliminar un periférico para siempre porque te parece molesto (ej. los cables del mouse, el teclado ruidoso), ¿cuál sería y con qué lo reemplazarías? ¿Llegará el día en que no necesitemos teclados ni mouses porque nosotros mismos seremos el periférico?"</em>"</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <footer>
         <p>&copy; 2026 <strong>CLASES DE TECNOLOGÍA</strong></p>
     </footer>
@@ -593,7 +759,12 @@
 
         function openClass(id) { document.getElementById(`modal-${id}`).style.display = 'flex'; }
         function closeClass(id) { document.getElementById(`modal-${id}`).style.display = 'none'; }
-        
+
+		function toggleRow(id) {
+            const el = document.getElementById(id);
+            el.style.display = (el.style.display === 'block') ? 'none' : 'block';
+        }
+  
         window.onclick = function(e) { 
             if (e.target.className === 'modal') {
                 e.target.style.display = 'none';
