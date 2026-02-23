@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TECH</title>
+    <title>ITP</title>
     <link rel="icon" sizes="64x64" href="favicon.png">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <style>
@@ -293,39 +293,60 @@
 
         <div id="hw" class="grid-layout active">
             <div class="card hw-card">
-                <i class="fas fa-bolt"></i>
+                <i class="fas fa-lightbulb"></i>
                 <span style="color: var(--accent-hardware); font-weight: bold; font-size: 0.8rem;">DISPONIBLE</span>
                 <h3>Clase 1: El Cyborg Tecnológico</h3>
                 <p>Hardware y la analogía del sistema humano.</p>
-                <button class="btn-class" onclick="openClass(1)" style="background: var(--accent-hardware); color: #000;">Ver Clase</button>
+                <button class="btn-class" onclick="openClass(1)" style="background: var(--accent-hardware); color: #000;">Ver clase</button>
             </div>
 
             <div class="card hw-card">
-                <i class="fas fa-city"></i>
+                <i class="fas fa-lightbulb"></i>
                 <span style="color: var(--accent-hardware); font-weight: bold; font-size: 0.8rem;">DISPONIBLE</span>
                 <h3>Clase 2: La ciudad eléctrica</h3>
                 <p>Tarjeta madre y CPU como motor central.</p>
-                <button class="btn-class" onclick="openClass(2)" style="background: var(--accent-hardware); color: #000;">Ver Clase</button>
+                <button class="btn-class" onclick="openClass(2)" style="background: var(--accent-hardware); color: #000;">Ver clase</button>
             </div>
 
             <div class="card hw-card">
-                <i class="fas fa-brain"></i>
+                <i class="fas fa-lightbulb"></i>
                 <span style="color: var(--accent-hardware); font-weight: bold; font-size: 0.8rem;">DISPONIBLE</span>
                 <h3>Clase 3: ¿Recordar o Guardar?</h3>
                 <p>RAM vs. Disco Duro.</p>
-                <button class="btn-class" onclick="openClass(3)" style="background: var(--accent-hardware); color: #000;">Ver Clase</button>
+                <button class="btn-class" onclick="openClass(3)" style="background: var(--accent-hardware); color: #000;">Ver clase</button>
             </div>
 
 			<div class="card hw-card">
-                <i class="fas fa-gamepad"></i>
-                <span style="color: var(--accent-robotics); font-weight: bold; font-size: 0.8rem;">NUEVO</span>
+                <i class="fas fa-lightbulb"></i>
+                <span style="color: var(--accent-hardware); font-weight: bold; font-size: 0.8rem;">DISPONIBLE</span>
                 <h3>Clase 4: Los sentidos del PC</h3>
                 <p>I/O Devices y flujo de datos.</p>
-                <button class="btn-class" onclick="openClass(4)" style="background: var(--accent-robotics); color: #000;">Ver Clase</button>
+                <button class="btn-class" onclick="openClass(4)" style="background: var(--accent-hardware); color: #000;">Ver clase</button>
+            </div>
+			<div class="card hw-card">
+                <i class="fas fa-lightbulb"></i>
+                <span style="color: var(--accent-hardware); font-weight: bold; font-size: 0.8rem;">DISPONIBLE</span>
+                <h3>Clase 5: Taller: El laboratorio de Frankenstein</h3>
+                <p>Diseño de esquema técnico de una computadora de alto rendimiento.</p>
+                <button class="btn-class" onclick="openClass(x)" style="background: var(--accent-hardware); color: #000;">Ver clase</button>
+            </div>
+			<div class="card hw-card">
+                <i class="fas fa-lightbulb"></i>
+                <span style="color: var(--accent-hardware); font-weight: bold; font-size: 0.8rem;">DISPONIBLE</span>
+                <h3>Clase 6: EVALUACIÓN I</h3>
+                <p>Resolución de casos críticos utilizando la lógica y conocimientos de hardware.</p>
+                <button class="btn-class" onclick="openClass(x)" style="background: var(--accent-hardware); color: #000;">Ver clase</button>
+            </div>
+			<div class="card hw-card">
+                <i class="fas fa-bolt"></i>
+                <span style="color: var(--accent-robotics); font-weight: bold; font-size: 0.8rem;">NUEVO</span>
+                <h3>Clase 7: El director de orquesta </h3>
+                <p>Identificar el rol del Sistema Operativo.</p>
+                <button class="btn-class" onclick="openClass(7)" style="background: var(--accent-robotics); color: #000;">Ver clase</button>
             </div>
 
             <script>
-                for(let i=4; i<=11; i++) {
+                for(let i=8; i<=11; i++) {
                     document.write(`<div class="card hw-card"><i class="fas fa-cpu"></i><h3>Clase ${i}</h3><p>Módulo de arquitectura y componentes.</p><button class="btn-class">Próximamente</button></div>`);
                 }
             </script>
@@ -729,6 +750,76 @@
 
                 <div class="sync-box">
                     <p><strong>Pregunta Final:</strong> <em>"Si pudieras eliminar un periférico para siempre porque te parece molesto (ej. los cables del mouse, el teclado ruidoso), ¿cuál sería y con qué lo reemplazarías? ¿Llegará el día en que no necesitemos teclados ni mouses porque nosotros mismos seremos el periférico?"</em>"</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+	<div id="modal-7" class="modal">
+        <div class="modal-content" style="border-color: var(--accent-robotics);">
+            <span class="close-modal" onclick="closeClass(7)">&times;</span>
+            <div class="content-body">
+                <h2>🎼 Clase 7: El director de orquesta (Sistemas operativos)</h2>
+                <p><strong>Objetivo:</strong> Comprender que el Sistema Operativo (SO) es el software principal que gestiona el hardware y permite la interacción con el usuario.</p>
+                
+                <h3>El misterio de la apariencia</h3>
+                <div class="activity-card">
+                    <p><strong>La pregunta:</strong> Si comparamos la pantalla de un iPhone y el escritorio de Windows... <em>"Si ambos equipos tienen procesador y RAM... ¿por qué no se ven ni se usan igual?"</em></p>
+                    <p><strong>La analogía:</strong> El hardware es el <strong>Instrumento</strong> (violín, trompeta), pero el Sistema Operativo es el <strong>director de orquesta</strong>. Sin el director, los músicos no saben qué tocar ni cuándo empezar.</p>
+                </div>
+
+				<h3>El traductor universal</h3>
+				<div class="activity-card" style="border-style: solid; border-color: var(--accent-extra);">
+                    <p>El Sistema Operativo es la capa de software que se comunica con los circuitos (Hardware) y nos entrega una cara amigable (Software).
+</p>
+                </div>
+
+                <p><strong><em>¿Qué hace realmente un SO?</em></strong></p>
+                <ul>
+                    <li><strong>Gestión de recursos:</strong> Decide cuánta RAM le toca a cada app para que nada explote.</li>
+                    <li><strong>Interfaz de usuario (UI):</strong> Traduce el lenguaje de la máquina (0 y 1) a iconos, botones y ventanas.</li>
+                    <li><strong>Administrador de archivos:</strong> Es el guía de la ruta para guardar/buscar información en el Disco Duro.</li>
+                </ul>
+
+                <h3>Líderes del mercado</h3>
+                <div class="analog-table-container">
+                    <table class="analog-table">
+                        <thead>
+                            <tr>
+                                <th>Característica</th>
+                                <th>Windows</th>
+                                <th>macOS / iOS</th>
+                                <th>Android</th>
+                                <th>Linux</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr><td><strong>Uso</strong></td><td>Oficina / Gaming</td><td>Diseño / Estatus</td><td>Móviles</td><td>Servidores / Desarrollo</td></tr>
+                            <tr><td><strong>Filosofía</strong></td><td>Compatibilidad</td><td>Ecosistema</td><td>Personalización</td><td>Libertad</td></tr>
+                            <tr><td><strong>Facilidad</strong></td><td>Media-Alta</td><td>Muy alta</td><td>Media</td><td>Baja</td></tr>
+							<tr><td><strong>Accesibilidad</strong></td><td>De pago (Licencia)</td><td>Incluido en el equipo (Caro)</td><td>Gratuito (lo pagan las marcas)</td><td>¡Totalmente Gratis!</td></tr>
+                            <tr><td><strong>Símbolo</strong></td><td><i class="fab fa-windows"></i></td><td><i class="fab fa-apple"></i></td><td><i class="fab fa-android"></i></td><td><i class="fab fa-linux"></i></td></tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <h3>Actividad: "The OS creator challenge"</h3>
+                <div class="activity-card" style="border-style: solid; border-color: var(--accent-extra);">
+                    <p><strong>Misión:</strong> Diseñar en su cuaderno la pantalla principal de un nuevo Sistema Operativo para un dispositivo inusual (ej: una nevera inteligente, un casco de realidad virtual o una consola portátil, reloj inteligente).
+</p>
+                    <ul>
+                        <li>Dibuja la <strong>barra de estado</strong> (Hora, Wi-Fi, Batería).</li>
+                        <li>Define el <strong>sistema de menú</strong> (¿Burbujas, listas o gestos?).</li>
+                        <li>Crea tu propia <strong>iconografía</strong> (Apps, Configuración).</li>
+						<li><strong>Nombrel del SO</strong> (Ponle un nombre comercial atractivo).</li>
+                    </ul>
+                </div>
+
+				<h3>El gran dilema</h3>
+                <div class="sync-box">
+                    <p><strong>Discusión:</strong> <em>"Si mañana borramos el Windows de tu PC, pero el procesador i7 está perfecto... ¿puedes jugar?"</em></p>
+					<p><strong>Pregunta rápida:</strong> <em>¿Es mejor un sistema cerrado como Apple (fácil pero rígido) o uno abierto como Android/Linux (difícil pero libre)?</em></p>
+                    <p><strong>Conclusión:</strong> Sin SO, el hardware es "chatarra digital". Es el alma que da órdenes al silicio.</p>
                 </div>
             </div>
         </div>
