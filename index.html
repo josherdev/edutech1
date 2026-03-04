@@ -226,28 +226,30 @@
         .tooltip {
             position: relative;
             display: inline-block;
-            border-bottom: 1px dotted var(--accent-hardware);
-            color: var(--accent-hardware);
+            border-bottom: 2px dotted var(--accent-extra);
+            color: var(--accent-extra);
+            font-weight: bold;
             cursor: help;
         }
 
         .tooltip .tooltiptext {
             visibility: hidden;
-            width: 200px;
+            width: 300px;
             background-color: #1e293b;
             color: #fff;
-            text-align: center;
-            border-radius: 6px;
-            padding: 10px;
+            text-align: left;
+            border-radius: 12px;
+            padding: 15px;
             position: absolute;
-            z-index: 1;
+            z-index: 10;
             bottom: 125%;
             left: 50%;
-            margin-left: -100px;
+            margin-left: -150px;
             opacity: 0;
             transition: opacity 0.3s;
-            font-size: 0.8rem;
-            border: 1px solid var(--accent-hardware);
+            font-size: 0.9rem;
+            border: 1px solid var(--accent-extra);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.5);
         }
 
         .tooltip:hover .tooltiptext {
@@ -338,15 +340,22 @@
                 <button class="btn-class" onclick="openClass(x)" style="background: var(--accent-hardware); color: #000;">Ver clase</button>
             </div>
 			<div class="card hw-card">
-                <i class="fas fa-bolt"></i>
-                <span style="color: var(--accent-robotics); font-weight: bold; font-size: 0.8rem;">NUEVO</span>
+                <i class="fas fa-lightbulb"></i>
+                <span style="color: var(--accent-hardware); font-weight: bold; font-size: 0.8rem;">NUEVO</span>
                 <h3>Clase 7: El director de orquesta </h3>
                 <p>Identificar el rol del Sistema Operativo.</p>
-                <button class="btn-class" onclick="openClass(7)" style="background: var(--accent-robotics); color: #000;">Ver clase</button>
+                <button class="btn-class" onclick="openClass(7)" style="background: var(--accent-hardware); color: #000;">Ver clase</button>
+            </div>
+			<div class="card hw-card">
+                <i class="fas fa-bolt"></i>
+                <span style="color: var(--accent-robotics); font-weight: bold; font-size: 0.8rem;">DISPONIBLE</span>
+                <h3>Clase 8: El kit de herramientas</h3>
+                <p>Software de aplicación y resolución de necesidades.</p>
+                <button class="btn-class" onclick="openClass(8)" style="background: var(--accent-robotics); color: #000;">Ver Clase</button>
             </div>
 
             <script>
-                for(let i=8; i<=11; i++) {
+                for(let i=9; i<=11; i++) {
                     document.write(`<div class="card hw-card"><i class="fas fa-cpu"></i><h3>Clase ${i}</h3><p>Módulo de arquitectura y componentes.</p><button class="btn-class">Próximamente</button></div>`);
                 }
             </script>
@@ -820,6 +829,95 @@
                     <p><strong>Discusión:</strong> <em>"Si mañana borramos el Windows de tu PC, pero el procesador i7 está perfecto... ¿puedes jugar?"</em></p>
 					<p><strong>Pregunta rápida:</strong> <em>¿Es mejor un sistema cerrado como Apple (fácil pero rígido) o uno abierto como Android/Linux (difícil pero libre)?</em></p>
                     <p><strong>Conclusión:</strong> Sin SO, el hardware es "chatarra digital". Es el alma que da órdenes al silicio.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+	<div id="modal-8" class="modal">
+        <div class="modal-content" style="border-color: var(--accent-hardware);">
+            <span class="close-modal" onclick="closeClass(8)">&times;</span>
+            <div class="content-body">
+                <h2>🛠️ Clase 8: El kit de herramientas (Software de aplicación)</h2>
+                <p><strong>Objetivo:</strong> Clasificar los diferentes tipos de software de aplicación según su función y utilidad, comprendiendo que cada programa es una herramienta diseñada para resolver una necesidad específica.</p>
+                
+                <h3>"Mi rastro digital"</h3>
+                <div class="activity-card">
+                    <p><strong>Pregunta:</strong> <em>"Desde que sonó la alarma de su celular hoy, ¿qué iconos han tocado en sus pantallas?"</em></p>
+                    <p style="margin-top: 10px;">Si el Sistema Operativo es la casa, las <strong>Aplicaciones</strong> son los muebles y herramientas que hacen que la casa sea útil para vivir, trabajar o jugar.</p>
+                </div>
+
+                <h3>La caja de herramientas digital</h3>
+                <p>No todo el software sirve para lo mismo. Para que el <strong>"Director de Orquesta" (SO)</strong> no se confunda, dividimos las aplicaciones en grandes familias. Haz clic para explorar:</p>
+                
+                <div class="analog-table-container">
+                    <table class="analog-table">
+                        <thead>
+                            <tr>
+                                <th>Categoría</th>
+                                <th>Interacción</th>
+                                <th>Propósito y Ejemplos</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td class="comp-tag">Productividad</td>
+                                <td><button onclick="toggleRow('app1')">Explorar</button></td>
+                                <td id="app1" class="hidden-content"><strong>Propósito:</strong> Crear, organizar y trabajar. <br> <strong>Ejemplos:</strong> Word, Excel, Google Docs, Photoshop.</td>
+                            </tr>
+                            <tr>
+                                <td class="comp-tag">Navegación</td>
+                                <td><button onclick="toggleRow('app2')">Explorar</button></td>
+                                <td id="app2" class="hidden-content"><strong>Propósito:</strong> Explorar la web (el puente al internet). <br> <strong>Ejemplos:</strong> Chrome, Firefox, Safari, Edge.</td>
+                            </tr>
+                            <tr>
+                                <td class="comp-tag">Creatividad / Diseño</td>
+                                <td><button onclick="toggleRow('app3')">Explorar</button></td>
+                                <td id="app3" class="hidden-content"><strong>Propósito:</strong> Editar fotos, videos o crear arte. <br> <strong>Ejemplos:</strong> Photoshop, Canva, CapCut, Procreate.</td>
+                            </tr>
+                            <tr>
+                                <td class="comp-tag">Entretenimiento</td>
+                                <td><button onclick="toggleRow('app4')">Explorar</button></td>
+                                <td id="app4" class="hidden-content"><strong>Propósito:</strong> Ocio, streaming y videojuegos. <br> <strong>Ejemplos:</strong> Netflix, Spotify, Discord, Steam.</td>
+                            </tr>
+                            <tr>
+                                <td class="comp-tag">Utilidades</td>
+                                <td><button onclick="toggleRow('app5')">Explorar</button></td>
+                                <td id="app5" class="hidden-content"><strong>Propósito:</strong> Herramientas de "mantenimiento". <br> <strong>Ejemplos:</strong> Antivirus, calculadoras, compresores (WinRAR).</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <h3>Actividad: "App Business Challenge"</h3>
+                <div class="activity-card" style="border-color: var(--accent-robotics);">
+                    <p><strong>Misión:</strong> En parejas, actúen como una 💡<span class="tooltip"> "Start-up".<span class="tooltiptext">Empresa tecnológica joven</span>
+                        </span> Su objetivo es identificar un problema real de su escuela y diseñar una app que lo resuelva.</p>
+                    <p style="margin-top: 10px;"><strong>Requisitos (en el cuaderno):</strong></p>
+                    <ul>
+                        <li>Nombre de la App atractiva.</li>
+                        <li>Categoría (según la tabla anterior).</li>
+                        <li>El Problema que soluciona.</li>
+                        <li>Función principal (Solo una cosa).</li>
+                        <li>Sketch de interfaz (Pantalla Home).</li>
+                    </ul>
+                    <p style="margin-top: 15px;"> 💡
+                        <span class="tooltip"> Ver sugerencias de problemas escolares
+                            <span class="tooltiptext">
+                                • Perder objetos en el recreo.<br>
+                                • No saber qué hay de comer en la cafetería.<br>
+                                • Olvidar las fechas de los exámenes.<br>
+                                • Organizar partidos de fútbol en el descanso.
+                            </span>
+                        </span>
+                    </p>
+                </div>
+
+                <div class="sync-box">
+                    <h3>Shark Tank Escolar</h3>
+                    <p><strong>Presentación:</strong> Presenten su idea en 30 segundos (Elevator Pitch).</p>
+                    <p style="margin-top: 10px;"><strong>Reflexión Final:</strong> <em>"¿Podría existir su aplicación si no tuviéramos un Sistema Operativo donde instalarla?"</em></p>
+                    <p style="margin-top: 10px; color: var(--accent-hardware);"><strong>Conclusión:</strong> El software de aplicación le da valor al usuario. El hardware procesa, el SO administra, pero la App resuelve.</p>
                 </div>
             </div>
         </div>
