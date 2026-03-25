@@ -259,6 +259,56 @@
 
         .hidden-content { display: none; color: var(--text-dim); font-style: italic; margin-top: 5px; }
 
+		/* Bitmap Grid */
+        .bitmap-container { margin: 20px 0; }
+        .bitmap-grid {
+            display: grid;
+            grid-template-columns: repeat(8, 40px);
+            gap: 5px;
+            margin-bottom: 15px;
+        }
+        .pixel {
+            width: 40px;
+            height: 40px;
+            background: #1e293b;
+            border: 1px solid #334155;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.7rem;
+            color: #FAFAFA;
+		
+        }
+        .pixel.active { background: var(--accent-robotics); color: #000; }
+
+        .toggle-btn {
+            background: var(--bg-dark);
+            color: var(--accent-hardware);
+            border: 1px solid var(--accent-hardware);
+            padding: 8px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-bottom: 10px;
+        }
+
+        .hidden-table { display: none; margin-top: 15px; }
+
+		.client-selector {
+            background: #1e293b;
+            color: white;
+            padding: 15px;
+            border-radius: 8px;
+            width: 100%;
+            margin-bottom: 10px;
+            border: 1px solid var(--accent-robotics);
+            cursor: pointer;
+            text-align: left;
+            font-weight: bold;
+            display: flex;
+            justify-content: space-between;
+        }
+
         footer {
             margin-top: 60px;
             padding: 20px 0;
@@ -341,21 +391,43 @@
             </div>
 			<div class="card hw-card">
                 <i class="fas fa-lightbulb"></i>
-                <span style="color: var(--accent-hardware); font-weight: bold; font-size: 0.8rem;">NUEVO</span>
+                <span style="color: var(--accent-hardware); font-weight: bold; font-size: 0.8rem;">DISPONIBLE</span>
                 <h3>Clase 7: El director de orquesta </h3>
                 <p>Identificar el rol del Sistema Operativo.</p>
                 <button class="btn-class" onclick="openClass(7)" style="background: var(--accent-hardware); color: #000;">Ver clase</button>
             </div>
 			<div class="card hw-card">
-                <i class="fas fa-bolt"></i>
-                <span style="color: var(--accent-robotics); font-weight: bold; font-size: 0.8rem;">DISPONIBLE</span>
+                <i class="fas fa-lightbulb"></i>
+                <span style="color: var(--accent-hardware); font-weight: bold; font-size: 0.8rem;">DISPONIBLE</span>
                 <h3>Clase 8: El kit de herramientas</h3>
                 <p>Software de aplicación y resolución de necesidades.</p>
-                <button class="btn-class" onclick="openClass(8)" style="background: var(--accent-robotics); color: #000;">Ver Clase</button>
+                <button class="btn-class" onclick="openClass(8)" style="background: var(--accent-hardware); color: #000;">Ver clase</button>
             </div>
+			<div class="card hw-card">
+                <i class="fas fa-lightbulb"></i>
+                <span style="color: var(--accent-hardware); font-weight: bold; font-size: 0.8rem;">DISPONIBLE</span>
+                <h3>Clase 9: Lógica y Binario</h3>
+                <p>El lenguaje secreto de los 0 y 1.</p>
+                <button class="btn-class" onclick="openClass(9)" style="background: var(--accent-hardware); color: #000;">Ver clase</button>
+            </div>
+			<div class="card hw-card">
+                <i class="fas fa-lightbulb"></i>
+                <span style="color: var(--accent-hardware); font-weight: bold; font-size: 0.8rem;">DISPONIBLE</span>
+                <h3>Clase 10: El traductor de sueños</h3>
+                <p>Comprender la función de los controladores (drivers) y usuarios.</p>
+                <button class="btn-class" onclick="openClass(10)" style="background: var(--accent-hardware); color: #000;">Ver clase</button>
+            </div>
+			 <div class="card hw-card">
+                <i class="fas fa-rocket"></i>
+                <span style="color: var(--accent-extra); font-weight: bold; font-size: 0.8rem;">FINAL</span>
+                <h3>Clase 11: EVALUACIÓN II</h3>
+                <p>Expo "Mi PC Ideal". Defensa de proyectos.</p>
+                <button class="btn-class" onclick="openClass(11)" style="background: var(--accent-extra); color: #000;">Iniciar Evaluación</button>
+            </div>
+        </div>
 
             <script>
-                for(let i=9; i<=11; i++) {
+                for(let i=12; i<=11; i++) {
                     document.write(`<div class="card hw-card"><i class="fas fa-cpu"></i><h3>Clase ${i}</h3><p>Módulo de arquitectura y componentes.</p><button class="btn-class">Próximamente</button></div>`);
                 }
             </script>
@@ -891,9 +963,9 @@
 
                 <h3>Actividad: "App Business Challenge"</h3>
                 <div class="activity-card" style="border-color: var(--accent-robotics);">
-                    <p><strong>Misión:</strong> Individual, actúa como una 💡<span class="tooltip"> "Start-up".<span class="tooltiptext">Empresa tecnológica joven</span>
+                    <p><strong>Misión:</strong> En parejas, actúen como una 💡<span class="tooltip"> "Start-up".<span class="tooltiptext">Empresa tecnológica joven</span>
                         </span> Su objetivo es identificar un problema real de su escuela y diseñar una app que lo resuelva.</p>
-                    <p style="margin-top: 10px;"><strong>Requisitos (en una hoja en blanco):</strong></p>
+                    <p style="margin-top: 10px;"><strong>Requisitos (en el cuaderno):</strong></p>
                     <ul>
                         <li>Nombre de la App atractiva.</li>
                         <li>Categoría (según la tabla anterior).</li>
@@ -915,8 +987,354 @@
 
                 <div class="sync-box">
                     <h3>Shark Tank Escolar</h3>
+                    <p><strong>Presentación:</strong> Presenten su idea en 30 segundos (Elevator Pitch).</p>
                     <p style="margin-top: 10px;"><strong>Reflexión Final:</strong> <em>"¿Podría existir su aplicación si no tuviéramos un Sistema Operativo donde instalarla?"</em></p>
                     <p style="margin-top: 10px; color: var(--accent-hardware);"><strong>Conclusión:</strong> El software de aplicación le da valor al usuario. El hardware procesa, el SO administra, pero la App resuelve.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+	<div id="modal-9" class="modal">
+        <div class="modal-content">
+            <span class="close-modal" onclick="closeClass(9)">&times;</span>
+            <div class="content-body">
+                <h2>🔢 Clase 9: El lenguaje de las máquinas (lógica y binario)</h2>
+                <p><strong>Objetivo:</strong> Comprender cómo la información se traduce a impulsos eléctricos mediante el sistema binario, permitiendo que el hardware procese datos complejos.</p>
+                
+                
+
+                <div class="activity-card">
+                    <p><strong>El acertijo:</strong> "Si yo les pidiera que se comuniquen solo con dos palabras, por ejemplo 'sí' y 'no', ¿podrían decirme cosas complejas? ¿Cómo harían para representar una letra o un número?"</p>
+                    <p>Si cada dedo de su mano solo pudiera estar totalmente estirado (1) o totalmente encogido (0), ¿cómo podrían contar hasta 10 usando solo dos dedos?".</p>
+                </div>
+
+                <p><strong>La solución:</strong> No es 1+1. Es por posiciones.<br><br>
+                Dedo derecho abajo, izquierdo abajo [00]= 0<br>
+                Dedo derecho arriba, izquierdo abajo [10]= 1<br>
+                Dedo derecho abajo, izquierdo arriba [01]= 2<br>
+                Dedo derecho arriba, izquierdo arriba [11]= 3<br><br>
+                <strong>Conexión:</strong> "Si con 2 dedos llegamos a 3, imaginen qué hace un procesador con miles de millones de 'dedos' electrónicos".</p>
+
+                <h3>¿Qué es el sistema binario?</h3>
+                <p>El sistema binario, popularmente conocido porque es el sistema que utilizan los ordenadores y el resto de dispositivos electrónicos, es un sistema de base 2. Eso significa que es un sistema que solo utiliza dos cifras para representar todos sus números y en el caso del código binario estas dos cifras son el (0) y el (1).</p>
+
+                <div class="sync-box">
+                    <p><strong>Analogía del interruptor:</strong> Un interruptor tiene dos estados: encendido (1) y apagado (0). Las computadoras tienen millones de interruptores diminutos llamados transistores.</p>
+                </div>
+
+                <h3>Representación de números:</h3>
+                <p>Con varios bits podemos representar números. Por ejemplo:<br>
+                1 bit: 0 o 1 → 2 posibilidades.<br>
+                2 bits: 00, 01, 10, 11 → 4 posibilidades.<br>
+                3 bits: 8 posibilidades, etc.</p>
+
+                <div class="activity-card" style="border-color: var(--accent-hardware);">
+                    <p><strong>Actividad rápida:</strong> En su cuaderno y/o en el pizarrón, formar los números del 0 al 7 usando 3 bits.</p>
+                </div>
+
+                <h3>La chispa de la vida digital</h3>
+                <ul>
+                    <li><strong>El interruptor:</strong> Un computador no entiende "A", "B" o "Hola". Solo entiende si pasa corriente (1 / ON) o si no pasa (0 / OFF). A esto le llamamos <strong>BIT</strong> (Binary Digit).</li>
+                    <li><strong>El código secreto (<span class="tooltip">ASCII<span class="tooltiptext">American Standard Code for Information Interchange: El traductor universal que asigna un número binario a cada letra y símbolo.</span></span>):</strong> Para que nosotros podamos usar el PC, los ingenieros inventaron un traductor. Decidieron que un grupo de 8 BITS (un <strong>BYTE</strong>) formaría una letra.</li>
+                </ul>
+
+                
+
+                <p style="margin-left:100px;"><strong>Ejemplo:</strong> El número 65 en binario es 01000001. El PC lee eso y dice: "¡Ah, es una letra A!".</p><br>
+                <strong>¿Por qué binario?</strong> Es más fácil y seguro para los circuitos. Solo hay dos estados. Si usáramos 10 estados (sistema decimal), un pequeño cambio de voltaje haría que el PC se confundiera entre un 7 y un 8. ¡Sería un caos!</p>
+
+                <h3>Práctica: "Tu nombre en bits"</h3>
+                <p><strong>Instrucción:</strong> Vas a "traducir" tu identidad al lenguaje de las máquinas.</p>
+                
+                <button class="toggle-btn" onclick="toggleElement('ascii-table')"><i class="fas fa-table"></i> Mostrar/Ocultar Tabla de Equivalencias</button>
+                
+                <div id="ascii-table" class="hidden-table">
+                    <table style="width:100%; border-collapse: collapse; background: rgba(255,255,255,0.05);">
+                        <tr style="border-bottom: 1px solid var(--accent-hardware); color: var(--accent-hardware);"><th>Letra</th><th>Binario</th><th>Letra</th><th>Binario</th></tr>
+                        <tr><td>A</td><td>01000001</td><td>N</td><td>01001110</td></tr>
+                        <tr><td>B</td><td>01000010</td><td>O</td><td>01001111</td></tr>
+                        <tr><td>C</td><td>01000011</td><td>P</td><td>01010000</td></tr>
+                        <tr><td>D</td><td>01000100</td><td>Q</td><td>01010001</td></tr>
+                        <tr><td>E</td><td>01000101</td><td>R</td><td>01010010</td></tr>
+                        <tr><td>F</td><td>01000110</td><td>S</td><td>01010011</td></tr>
+                        <tr><td>G</td><td>01000111</td><td>T</td><td>01010100</td></tr>
+                        <tr><td>H</td><td>01001000</td><td>U</td><td>01010101</td></tr>
+                        <tr><td>I</td><td>01001001</td><td>V</td><td>01010110</td></tr>
+                        <tr><td>J</td><td>01001010</td><td>W</td><td>01010111</td></tr>
+                        <tr><td>K</td><td>01001011</td><td>X</td><td>01011000</td></tr>
+                        <tr><td>L</td><td>01001100</td><td>Y</td><td>01011001</td></tr>
+                        <tr><td>M</td><td>01001101</td><td>Z</td><td>01011010</td></tr>
+                    </table>
+                </div>
+
+                <ol>
+                    <li>Cada estudiante escribe su nombre (por ejemplo, "Grecia").</li>
+                    <li>Usando la tabla, traduce cada letra a binario.</li>
+                    <li>Escribe el resultado final como una secuencia de bits.</li>
+                </ol>
+
+                <div class="sync-box" style="border-color: var(--accent-hardware);">
+                    <p><strong>Desafío pro: "Dibuja" tu nombre usando una cuadrícula.</strong> Colorea los cuadros donde hay un 1 y deja en blanco donde hay un 0.</p>
+                    <div class="bitmap-container">
+                        <button class="toggle-btn" onclick="addRow()">+ Añadir Fila (Letra)</button>
+                        <div id="pixel-grid"></div>
+                    </div>
+                    <p><em>¡Felicidades, acabas de crear un Bitmap!</em></p>
+                </div>
+
+                <div class="activity-card">
+                    <p><strong>Mensaje oculto:</strong> Descifra el código y ordénalo:<br>
+                    <code style="color: var(--accent-robotics);"><strong>(01000001  01000001  01001010  01000011)</strong></code><br>
+                    El primer alumno en decodificarlo gana un "punto de procesamiento".</p>
+                </div>
+
+                <h3>¿Por qué los computadores no hablan español?</h3>
+                <p><strong>Reflexión final:</strong> "Si los computadores son tan potentes, ¿por qué tenemos que rebajarnos a su nivel de 0 y 1?".<br>
+                <strong>La realidad:</strong> Porque el lenguaje humano es ambiguo. Si yo digo "banco", ¿es donde te sientas o donde guardas dinero? Los circuitos no pueden dudar. El binario es exacto: O es o no es.</p>
+
+                <div class="sync-box" style="background: var(--bg-dark);">
+                    <p><strong>Conclusión:</strong> Aprendemos binario porque es la base de todo. Sin el 0 y el 1, no habría TikTok, ni Fortnite, ni Inteligencia Artificial.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+	<div id="modal-10" class="modal">
+        <div class="modal-content" style="border-color: var(--accent-hardware);">
+            <span class="close-modal" onclick="closeClass(10)">&times;</span>
+            <div class="content-body">
+                <h2>🗣️ Clase 10: El traductor de sueños (drivers y usuarios)</h2>
+                <p><strong>Objetivo:</strong> Comprender la función de los controladores (drivers) como puente de comunicación entre el software y el hardware, y la importancia de mantener el sistema actualizado.</p>
+                
+                <div class="sync-box" style="border-color: var(--accent-robotics);">
+                    <button class="toggle-btn" onclick="toggleDinamica()">
+                        <i class="fas fa-chevron-down"></i> El dron humano (Protocolo de control)
+                    </button>
+                    
+                    <div id="dinamica-content" class="hidden-content">
+                        <h3>1. Los roles:</h3>
+                        <ul>
+                            <li><strong>El piloto (Software/Usuario):</strong> Es quien tiene el objetivo. Solo puede dar órdenes en lenguaje humano: "Camina a la izquierda, agáchate, tómalo".</li>
+                            <li><strong>El dron (Hardware):</strong> Es un alumno que estará en el centro. No puede entender el lenguaje humano. Solo reacciona a estímulos físicos específicos (sensores).</li>
+                            <li><strong>El driver (Controlador):</strong> Es el único que tiene la "Tabla de Protocolos". Su trabajo es escuchar al Piloto y tocar los hombros/cabeza del Dron para que este se mueva.</li>
+                        </ul>
+                        <h3>2. La tabla de protocolos (El driver la tiene en secreto):</h3>
+                        <div class="activity-card">
+                            <p>El dron solo sabe hacer esto:</p>
+                            <ul>
+                                <li><strong>Toque en hombro derecho:</strong> Girar 90° a la derecha.</li>
+                                <li><strong>Toque en hombro izquierdo:</strong> Girar 90° a la izquierda.</li>
+                                <li><strong>Toque en la cabeza:</strong> Dar un paso al frente.</li>
+                                <li><strong>Dos toques en la cabeza:</strong> Agacharse / Recoger.</li>
+                            </ul>
+                        </div>
+                        <h3>3. El desafío:</h3>
+                        <p>Colocamos el marcador en un punto difícil del salón. El piloto empieza a dar órdenes gritando: "¡A la derecha! ¡Avanza dos pasos!". El dron no se mueve (porque el hardware no entiende "derecha"). El driver debe traducir rápidamente.</p>
+                        <p><strong>El giro inesperado (La actualización):</strong> A mitad de la dinámica, el profesor dice: "¡El fabricante del Dron cambió el sistema! ¡Actualización de Driver necesaria!". Ahora, el toque en el hombro derecho significa "Caminar hacia atrás". Si el Driver no "actualiza" su lógica, el Dron chocará.</p>
+                        <p><em><strong>Reflexión rápida:</strong> Sin el Driver, el hardware es una pieza de metal muy cara pero inútil. El Driver es el que le enseña al Sistema Operativo cómo usar ese aparato específico.</em></p>
+                    </div>
+                </div>
+
+                <h3>El manual de instrucciones invisible</h3>
+                <p><strong>¿Qué es un driver?</strong> Imagina que compras un mueble IKEA. El mueble es el Hardware, tú eres el Usuario, pero el papel con los dibujos que te dice cómo armarlo es el Driver.</p>
+                <p><strong>El idioma del hardware:</strong> Cada marca (HP, Epson, Nvidia) construye su hardware de forma diferente. El Sistema Operativo no puede saber de memoria cómo funcionan los millones de aparatos. Por eso, cada aparato trae su propio "traductor".</p>
+
+                <div class="analog-table-container">
+                    <table class="analog-table">
+                        <thead>
+                            <tr>
+                                <th>Razón</th>
+                                <th>¿Qué sucede realmente?</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td class="comp-tag">Nuevas funciones</td>
+                                <td>El hardware aprende a hacer trucos nuevos (ej. imprimir más rápido).</td>
+                            </tr>
+                            <tr>
+                                <td class="comp-tag">Seguridad</td>
+                                <td>Se cierran "puertas traseras" por donde podrían entrar hackers.</td>
+                            </tr>
+                            <tr>
+                                <td class="comp-tag">Corrección de bugs</td>
+                                <td>Se soluciona ese error que hacía que tu mouse se quedara trabado sin razón.</td>
+                            </tr>
+                            <tr>
+                                <td class="comp-tag">Compatibilidad</td>
+                                <td>Tu impresora vieja aprende a hablar con el Windows más nuevo.</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <h3>Actividad: El camino del click</h3>
+                <div class="activity-card">
+                    <p><strong>Misión:</strong> En parejas, vamos a mapear el viaje de una orden. Imaginen que quieren imprimir una foto de su perro.</p>
+                    <ol>
+                        <li><strong>Inicio:</strong> El dedo del usuario hace Click.</li>
+                        <li><strong>Software de aplicación:</strong> El programa (Word/Photoshop) recibe la orden.</li>
+                        <li><strong>Sistema operativo:</strong> El "Jefe" busca al traductor.</li>
+                        <li><strong>El driver:</strong> Traduce la imagen a miles de ceros y unos (0 y 1).</li>
+                        <li><strong>Cable/Wi-Fi:</strong> Los datos viajan físicamente.</li>
+                        <li><strong>Hardware (Impresora):</strong> Los motores se mueven.</li>
+                        <li><strong>Final:</strong> El papel sale con la foto.</li>
+                    </ol>
+                    <p><strong>¡Anótalo!</strong> Si un cable se desconecta en el paso 5, ¿qué pasa con el resto del proceso?</p>
+                </div>
+
+                <div class="sync-box">
+                    <h3>IV. Cierre: Preparando motores</h3>
+                    <p>Hoy aprendimos que el software no toca al hardware directamente. Siempre hay un traductor en medio.</p>
+                    <p><strong>Tarea rápida:</strong> Revisen en su casa si su computadora o celular tiene alguna actualización pendiente. ¡No le ignoren el mensaje al Driver hoy!</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+	<div id="modal-11" class="modal">
+        <div class="modal-content" style="border-color: var(--accent-extra);">
+            <span class="close-modal" onclick="closeClass(11)">&times;</span>
+            <div class="content-body">
+                <h2>🚀 Clase 11: EVALUACIÓN II - Expo "Mi PC Ideal"</h2>
+                <p><strong>Objetivo:</strong> Integrar todos los conocimientos del curso (Hardware, Software, SO y Periféricos) mediante la defensa de una configuración personalizada para un perfil de usuario específico.</p>
+
+                <h3>Montaje: El "Backstage" tecnológico</h3>
+                <div class="activity-card">
+                    <p><strong>El rol de la audiencia:</strong> Mientras un compañero expone, el resto actúa como <strong>Inversionistas</strong>. Cada alumno tiene un "presupuesto imaginario" para decidir qué proyecto le parece más sólido técnicamente.</p>
+                </div>
+
+                <h3>Exposición: El "Elevator Pitch" tecnológico</h3>
+                <p>Cada consultor tiene entre 4 y 5 minutos para defender su Build. Para que la nota sea excelente, el alumno debe responder a estos tres pilares:</p>
+                
+                <div class="sync-box">
+                    <p><strong>1. El propósito (¿A quién ayudamos?)</strong><br>
+                    Ejemplo: "Mi PC es para un Médico Cirujano que necesita analizar radiografías en 3D desde su casa".<br>
+                    <em>Análisis: ¿Por qué este usuario necesita potencia y no una tablet básica?</em></p>
+
+                    <p><strong>2. El hardware (La bestia)</strong><br>
+                    • Procesador (CPU): ¿Muchos núcleos para multitarea o mucha velocidad para un solo proceso?<br>
+                    • Memoria (RAM): ¿8GB para oficina o 32GB para 
+                    <span class="tooltip">renderizado<span class="tooltiptext">Proceso de generar una imagen o video final mediante cálculos complejos de computadora.</span></span> pesado?<br>
+                    • Almacenamiento: ¿SSD para velocidad de arranque o HDD para guardar muchos terabytes de archivos?</p>
+
+                    <p><strong>3. El software (El Alma)</strong><br>
+                    • Sistema operativo: ¿Windows por compatibilidad, macOS por diseño o Linux por seguridad?<br>
+                    • Apps & Drivers: ¿Qué herramientas de productividad o diseño instalaste? ¿Qué drivers críticos no pueden faltar (ej. Drivers de la GPU para el Gamer)?</p>
+                </div>
+
+                <h3>🎭 Elige a tu "Cliente" para el setup</h3>
+                <p>Haz clic en cada perfil para ver los detalles del reto:</p>
+
+                <button class="client-selector" onclick="toggleRow('c1')">1. El streamer de E-Sports ("Alex") <i class="fas fa-chevron-down"></i></button>
+                <div id="c1" class="hidden-content">
+                    <p><strong>El Reto:</strong> Necesita jugar a <span class="tooltip">240 FPS<span class="tooltiptext">Frames Per Second: Cantidad de imágenes que la PC muestra por segundo. A mayor número, más fluidez.</span></span> y transmitir en vivo al mismo tiempo sin que la PC explote.<br>
+                    <strong>Hardware clave:</strong> Procesador con muchos núcleos, GPU de gama alta y doble monitor.<br>
+                    <strong>Software:</strong> Windows 11, OBS Studio, Discord y drivers de video al día.</p>
+                </div>
+
+                <button class="client-selector" onclick="toggleRow('c2')">2. La artista de películas 3D ("Maya") <i class="fas fa-chevron-down"></i></button>
+                <div id="c2" class="hidden-content">
+                    <p><strong>El reto:</strong> Trabaja creando personajes como los de Spider-Man: Across the Spider-Verse. Sus archivos pesan gigabytes.<br>
+                    <strong>Hardware clave:</strong> Muchísima memoria RAM (mínimo 32GB), un monitor 4K con colores reales y una tableta digitalizadora.<br>
+                    <strong>Software:</strong> Blender, Adobe After Effects y un Sistema Operativo muy estable (macOS o Windows Pro).</p>
+                </div>
+
+                <button class="client-selector" onclick="toggleRow('c3')">3. El productor musical ("DJ Bit") <i class="fas fa-chevron-down"></i></button>
+                <div id="c3" class="hidden-content">
+                    <p><strong>El reto:</strong> Graba voces y mezcla beats. El ruido de los ventiladores de la PC no debe colarse en el micrófono.<br>
+                    <strong>Hardware clave:</strong> Un disco duro SSD ultra rápido (para que no haya lag en el sonido), una interfaz de audio externa y ventiladores silenciosos.<br>
+                    <strong>Software:</strong> FL Studio o Ableton Live, y drivers de audio específicos (ASIO).</p>
+                </div>
+
+                <button class="client-selector" onclick="toggleRow('c4')">4. La ciber-investigadora ("Detective Cipher") <i class="fas fa-chevron-down"></i></button>
+                <div id="c4" class="hidden-content">
+                    <p><strong>El reto:</strong> Se dedica a proteger empresas de hackers. Necesita un sistema que sea un búnker.<br>
+                    <strong>Hardware clave:</strong> Varios monitores para ver códigos al mismo tiempo y un procesador que cifre datos rápido.<br>
+                    <strong>Software:</strong> Linux (esencial para seguridad), máquinas virtuales y herramientas de encriptación.</p>
+                </div>
+
+                <button class="client-selector" onclick="toggleRow('c5')">5. El Influencer de viajes ("Sofi") <i class="fas fa-chevron-down"></i></button>
+                <div id="c5" class="hidden-content">
+                    <p><strong>El reto:</strong>Edita videos 4K grabados con drones y cámaras de acción mientras viaja por el mundo.<br>
+                    <strong>Hardware clave:</strong> Una laptop potente (Laptop Gamer o MacBook Pro), discos duros externos resistentes a golpes y mucha batería.<br>
+                    <strong>Software:</strong> CapCut de escritorio, Premiere Pro y herramientas de nube (Google Drive/iCloud) para respaldar todo.</p>
+                </div>
+
+                <button class="client-selector" onclick="toggleRow('c6')">6. El científico del espacio ("Dr. Kepler") <i class="fas fa-chevron-down"></i></button>
+                <div id="c6" class="hidden-content">
+                    <p><strong>El reto:</strong> Analiza fotos de galaxias lejanas que envía el telescopio James Webb.<br>
+                    <strong>Hardware clave:</strong> Una "Workstation" con capacidad de almacenamiento masiva (muchos Terabytes en HDD) y una conexión a internet de fibra óptica empresarial.<br>
+                    <strong>Software:</strong> Programas de simulación matemática y un SO capaz de manejar bases de datos gigantes.</p>
+                </div>
+
+                <button class="client-selector" onclick="toggleRow('c7')">7. El arquitecto de mundos ("Leo") <i class="fas fa-chevron-down"></i></button>
+                <div id="c7" class="hidden-content">
+                    <p><strong>El reto:</strong> No solo juega, él construye. Diseña mapas gigantes con miles de bloques y física en tiempo real. Si su PC es lenta, el juego se "crashea" al probar sus creaciones.<br>
+                    <strong>Hardware clave:</strong> Un procesador (CPU) con mucha potencia por núcleo y una tarjeta gráfica (GPU) que aguante texturas pesadas.<br>
+                    <strong>Software:</strong> Roblox Studio, Unity, y herramientas de modelado simple como Blockbench.</p>
+                </div>
+
+                <button class="client-selector" onclick="toggleRow('c8')">8. La genio de la IA ("Dra. Turing") <i class="fas fa-chevron-down"></i></button>
+                <div id="c8" class="hidden-content">
+                    <p><strong>El reto:</strong> Entrena modelos de Inteligencia Artificial para que reconozcan voces de animales. La IA necesita "leer" millones de datos en segundos.<br>
+                    <strong>Hardware clave:</strong> Aquí lo más importante es la VRAM (la memoria de la tarjeta de video). Necesita una GPU de nivel profesional y muchísima ventilación porque la PC estará encendida días enteros.<br>
+                    <strong>Software:</strong> Linux (Ubuntu es el favorito aquí), Python y librerías de datos.</p>
+                </div>
+
+                <button class="client-selector" onclick="toggleRow('c9')">9. La "Full-Stack" dev ("Luna") <i class="fas fa-chevron-down"></i></button>
+                <div id="c9" class="hidden-content">
+                    <p><strong>El reto:</strong> Crea aplicaciones para celulares. Necesita tener abiertos al mismo tiempo el código, un simulador de teléfono y 50 pestañas de tutoriales en Chrome.<br>
+                    <strong>Hardware clave:</strong> ¡Mucha RAM (mínimo 16GB o 32GB)! Además, necesita un Monitor Ultra-Wide (o dos monitores) para ver todo el código sin dejarse los ojos.<br>
+                    <strong>Software:</strong> Visual Studio Code, Android Studio y sistemas de control de versiones como Git.</p>
+                </div>
+
+                <button class="client-selector" onclick="toggleRow('c10')">10. El ingeniero verde ("Nico") <i class="fas fa-chevron-down"></i></button>
+                <div id="c10" class="hidden-content">
+                    <p><strong>El reto:</strong> Quiere una oficina que funcione 100% con paneles solares. Su prioridad no es la potencia bruta, sino la eficiencia energética (que la PC consuma lo mínimo posible sin dejar de ser rápida).<br>
+                    <strong>Hardware clave:</strong> Componentes de "Bajo Consumo" (como procesadores serie T o portátiles eficientes) y una fuente de poder con certificación 80 Plus Platinum (que no desperdicia electricidad).<br>
+                    <strong>Software:</strong> Un sistema operativo ligero (como una versión liviana de Linux) y apps que midan el consumo de energía en tiempo real.</p>
+                </div>
+
+                <h3>Tabla de evaluación</h3>
+                <div class="analog-table-container">
+                    <table class="analog-table">
+                        <thead>
+                            <tr>
+                                <th>Criterio</th>
+                                <th>⭐ Excelente</th>
+                                <th>👍 Bien</th>
+                                <th>⚠️ Por mejorar</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td class="comp-tag">Coherencia</td>
+                                <td>Hardware y software encajan perfecto con el usuario.</td>
+                                <td>Falta una pieza o el SO no es el ideal.</td>
+                                <td>Las piezas no sirven para la tarea.</td>
+                            </tr>
+                            <tr>
+                                <td class="comp-tag">Dominio Técnico</td>
+                                <td>Explica RAM, SSD y OS con seguridad.</td>
+                                <td>Conoce los nombres pero duda en su función.</td>
+                                <td>Confunde hardware con software.</td>
+                            </tr>
+                            <tr>
+                                <td class="comp-tag">Presentación</td>
+                                <td>Material visual claro y buena expresión oral.</td>
+                                <td>Se apoya mucho en la lámina.</td>
+                                <td>No preparó material visual.</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="sync-box" style="border-color: var(--accent-robotics); background: rgba(34, 197, 94, 0.05);">
+                    <h3>Cierre: Graduación de ciudadanos digitales</h3>
+                    <p><strong>Feedback Grupal:</strong> Mención a los 3 proyectos más innovadores.</p>
+                    <p><em>"Chicos, hace 11 clases no sabían qué había dentro de esa caja negra. Hoy, son capaces de armar un mundo digital desde cero. No vean la tecnología como magia, véanla como una herramienta que ustedes controlan".</em></p>
                 </div>
             </div>
         </div>
@@ -929,6 +1347,35 @@
     <script>
         const tabs = document.querySelectorAll('.tab-btn');
         const grids = document.querySelectorAll('.grid-layout');
+
+		function openClass(id) { document.getElementById(`modal-${id}`).style.display = 'flex'; }
+        function closeClass(id) { document.getElementById(`modal-${id}`).style.display = 'none'; }
+        
+        function toggleElement(id) {
+            const el = document.getElementById(id);
+            el.style.display = el.style.display === 'block' ? 'none' : 'block';
+        }
+
+        function addRow() {
+            const grid = document.getElementById('pixel-grid');
+            const row = document.createElement('div');
+            row.className = 'bitmap-grid';
+            for(let i=0; i<8; i++) {
+                const pixel = document.createElement('div');
+                pixel.className = 'pixel';
+                pixel.innerHTML = '0';
+                pixel.onclick = function() {
+                    this.classList.toggle('active');
+                    this.innerHTML = this.classList.contains('active') ? '1' : '0';
+                };
+                row.appendChild(pixel);
+            }
+            grid.appendChild(row);
+        }
+
+		// Inicializar una fila
+        
+		addRow();
 
         tabs.forEach(tab => {
             tab.addEventListener('click', () => {
@@ -950,8 +1397,9 @@
 
 		function toggleRow(id) {
             const el = document.getElementById(id);
-            el.style.display = (el.style.display === 'block') ? 'none' : 'block';
+            el.style.display = el.style.display === 'block' ? 'none' : 'block';
         }
+
   
         window.onclick = function(e) { 
             if (e.target.className === 'modal') {
@@ -960,6 +1408,19 @@
         }
         
         displayDate();
+		// Dinámica Clase 10
+        function toggleDinamica() {
+            const content = document.getElementById('dinamica-content');
+            const btn = document.querySelector('.toggle-btn i');
+            if (content.style.display === "block") {
+                content.style.display = "none";
+                btn.className = "fas fa-chevron-down";
+            } else {
+                content.style.display = "block";
+                btn.className = "fas fa-chevron-up";
+            }
+        }
+
     </script>
 </body>
 </html>
